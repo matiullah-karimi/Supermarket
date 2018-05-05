@@ -79,7 +79,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        dd($category);
+        $category->name = $request->get('name');
+        $category->update();
+        
+        return redirect('/categories');
     }
 
     /**
