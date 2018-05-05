@@ -1,7 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="page-content vertical-align-middle col-md-offset-4 col-md-4">
+    <div class="panel">
+        <div class="panel-body">
+          <div class="brand">
+            <img class="brand-img" src="../assets/images/logo-blue.png" alt="...">
+            <h2 class="brand-text font-size-18">Remark</h2>
+          </div>
+          <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <div class="form-group form-material floating">
+                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                <label class="floating-label">Email</label>
+                @if ($errors->has('email'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group form-material floating">
+                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                <label class="floating-label">Password</label>
+
+                @if ($errors->has('password'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg margin-top-40">Sign in</button>
+          </form>
+        </div>
+      </div>
+    </div>
+{{--  <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -65,5 +98,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>  --}}
 @endsection
