@@ -91,7 +91,7 @@ class ItemController extends Controller
     public function update(Request $request, Item $item)
     {
         $item->name = $request->get('name');
-        $item->description = $request->get('description');
+        $item->desc = $request->get('desc');
         $item->category_id = $request->get('category_id');
         $item->price = $request->get('price');
         $item->quantity = $request->get('quantity');

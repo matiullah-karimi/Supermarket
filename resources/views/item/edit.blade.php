@@ -4,11 +4,12 @@
 <div class="page-content vertical-align-middle col-md-offset-1 col-md-8">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Add Category</h3>
+            <h3 class="panel-title">Edit {{ $item-> name}}</h3>
         </div>
         <div class="panel-body container-fluid">
-            <form autocomplete="off" action="/items" method="POST">
-                {{  csrf_field() }}
+            <form autocomplete="off" action="/items/{{ $item->id }}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('PUT') }}
 
                 <div class="form-group form-material floating">
                     <input type="text" class="form-control empty" name="name" required value="{{ $item->name }}">
@@ -16,7 +17,7 @@
                 </div>
 
                 <div class="form-group form-material floating">
-                    <textarea class="form-control empty" rows="3" name="description" value="{{ $item->desc }}"></textarea> 
+                    <textarea class="form-control empty" rows="3" name="description"> {{ $item->desc }} </textarea> 
                    <label class="floating-label">Description</label>
                 </div>
 
